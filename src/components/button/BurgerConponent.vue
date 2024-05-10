@@ -1,9 +1,9 @@
 <template>
-  <div class="menu-btn" @click="toggleActive" :class="{ active: isActive }">
-    <div class="menu-btn__wrapper">
-      <span class="menu-btn__icon"></span>
-      <span class="menu-btn__icon"></span>
-      <span class="menu-btn__icon"></span>
+  <div class="burger" @click="toggleActive" :class="{ active: isActive }">
+    <div class="burger__wrapper">
+      <span class="burger__icon"></span>
+      <span class="burger__icon"></span>
+      <span class="burger__icon"></span>
     </div>
   </div>
 </template>
@@ -17,7 +17,7 @@ function toggleActive() {
 </script>
 
 <style lang="scss" scoped>
-.menu-btn {
+.burger {
   padding: 10px;
   background-color: $fon-fon-seryy;
   margin-left: 4px;
@@ -34,33 +34,29 @@ function toggleActive() {
   }
 }
 
-.menu-btn__icon {
+.burger__icon {
   width: 100%;
   height: 2px;
   background-color: #252424;
   transition: 0.4s;
 }
 
-.menu-btn.active .menu-btn__icon:nth-child(1) {
+.burger.active .burger__icon:nth-child(1) {
   transform: translateY(5px) rotate(45deg);
 }
 
-.menu-btn.active .menu-btn__icon:nth-child(2) {
+.burger.active .burger__icon:nth-child(2) {
   opacity: 0;
 }
 
-.menu-btn.active .menu-btn__icon:nth-child(3) {
+.burger.active .burger__icon:nth-child(3) {
   transform: translateY(-5px) rotate(-45deg);
 }
 
 @media screen and (min-width: 992px) {
-  .menu-btn {
+  .burger {
     display: none;
     padding: 16px;
-    &__wrapper {
-    }
-    &__icon {
-    }
   }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="place">
-    <img src="../../assets/images/icons/place.svg" alt="" />
+    <img src="src/assets/images/icons/place.svg" alt="" />
     <p class="place__text">Киев</p>
     <p class="place__text">RU</p>
   </div>

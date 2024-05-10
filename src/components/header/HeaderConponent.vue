@@ -2,22 +2,20 @@
   <div class="header">
     <div class="container">
       <div class="header__wrapper">
-        <div class="logo"><LogoNinjaSushi /></div>
-        <nav class="navBar">
-          <PlaceButton class="navBar__place" /><headerNavBar />
-        </nav>
-        <div class="button"><headerButton /> <headerMenu /></div>
+        <div class="logo"><Logo /></div>
+        <nav class="navBar"><Location /><NavBar /></nav>
+        <div class="button"><headerButton /> <Burger /></div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import LogoNinjaSushi from '../logo/NinjaSushi.vue';
-import PlaceButton from '../button/PlaceButton.vue';
-import headerButton from '../block/headerButton.vue';
-import headerMenu from '../button/headerMenu.vue';
-import headerNavBar from 'src/components/block/HeaderNavBar.vue';
+import Logo from 'src/components/logo/LogoComponent.vue';
+import headerButton from 'src/components/navigation/headerButton.vue';
+import NavBar from 'src/components/navigation/NavBar.vue';
+import Location from 'src/components/button/LocationConponent.vue';
+import Burger from 'src/components/button/BurgerConponent.vue';
 </script>
 
 <style scoped lang="scss">

@@ -13,7 +13,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { sourceButtonHeader } from './modelsheaderButton';
+import { sourceButtonHeader } from './type';
 
 const sourceButtons = ref<sourceButtonHeader[]>([
   { id: 1, link: 'src/assets/images/icons/bell.svg', alt: 'bell' },
@@ -77,3 +77,4 @@ const sourceButtons = ref<sourceButtonHeader[]>([
   }
 }
 </style>
+./type

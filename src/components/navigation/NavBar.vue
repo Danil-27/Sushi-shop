@@ -1,27 +1,27 @@
 <template>
   <ul class="nav">
     <li class="nav__item" v-for="link in links" :key="link.id">
-      <a class="nav__link" :href="link.link">
+      <routerLink :to="link.link" class="nav__link">
         <img
           v-if="link.id === 5"
           class="nav__img"
-          src="/src/assets/images/icons/tel.svg"
+          src="src/assets/images/icons/tel.svg"
           alt="tel"
         />
         {{ link.name }}
-      </a>
+      </routerLink>
     </li>
   </ul>
 </template>
 <script lang="ts" setup>
-import { myLink } from './modelsHeaderNavBar';
+import { myLink } from './type';
 import { ref } from 'vue';
 
 const links = ref<myLink[]>([
-  { id: 1, name: 'Главная', link: '/eee22' },
-  { id: 2, name: 'Доставка', link: '/eee22' },
-  { id: 3, name: 'О нас', link: '/eee22' },
-  { id: 4, name: 'Новости', link: '/eee22' },
+  { id: 1, name: 'Главная', link: '/Home' },
+  { id: 2, name: 'Доставка', link: '/Delivery' },
+  { id: 3, name: 'О нас', link: '/About' },
+  { id: 4, name: 'Новости', link: '/News' },
   { id: 5, name: '+38 097 699 34 38', link: 'tel:+380976993438' },
 ]);
 </script>
