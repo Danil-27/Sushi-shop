@@ -11,11 +11,11 @@
 </template>
 
 <script setup lang="ts">
-import Logo from 'src/components/logo/LogoComponent.vue';
-import headerButton from 'src/components/navigation/headerButton.vue';
+import Logo from 'src/components/logo/Logo.vue';
+import headerButton from 'src/components/navigation/ContainerBtn.vue';
 import NavBar from 'src/components/navigation/NavBar.vue';
-import Location from 'src/components/button/LocationConponent.vue';
-import Burger from 'src/components/button/BurgerConponent.vue';
+import Location from 'src/components/button/Location.vue';
+import Burger from 'src/components/button/Burger.vue';
 </script>
 
 <style scoped lang="scss">

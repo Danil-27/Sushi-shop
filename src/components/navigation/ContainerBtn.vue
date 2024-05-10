@@ -1,11 +1,11 @@
 <template>
   <div class="header-button">
     <div
-      class="header-button__item"
       v-for="srcBtn in sourceButtons"
       :key="srcBtn.id"
+      class="header-button__item"
     >
-      <span class="header-button__text" v-if="srcBtn.id === 4">Корзина</span>
+      <span v-if="srcBtn.id === 4" class="header-button__text">Корзина</span>
       <img class="header-button__img" :src="srcBtn.link" :alt="srcBtn.alt" />
     </div>
   </div>

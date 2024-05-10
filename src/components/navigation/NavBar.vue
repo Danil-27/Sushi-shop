@@ -1,6 +1,6 @@
 <template>
   <ul class="nav">
-    <li class="nav__item" v-for="link in links" :key="link.id">
+    <li v-for="link in links" :key="link.id" class="nav__item">
       <routerLink :to="link.link" class="nav__link">
         <img
           v-if="link.id === 5"
