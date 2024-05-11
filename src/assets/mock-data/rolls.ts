@@ -2,6 +2,7 @@ import { CatalogItem } from './type';
 
 export const data: CatalogItem[] = [
   {
+    id: 9,
     imgUrl: '../catalog-pictures/rolls/filadelfia-s-lososem.svg',
     title: 'Филадельфия с лососем',
     weight: '320 г',
@@ -9,6 +10,7 @@ export const data: CatalogItem[] = [
     price: 190,
   },
   {
+    id: 10,
     imgUrl: '../catalog-pictures/rolls/filadelfia-s-ugrem.svg',
     title: 'Филадельфия с угрем',
     weight: '320 г',
@@ -17,6 +19,7 @@ export const data: CatalogItem[] = [
     price: 190,
   },
   {
+    id: 11,
     imgUrl: '../catalog-pictures/rolls/kratos.svg',
     title: 'Кратос',
     weight: '310 г',
@@ -25,6 +28,7 @@ export const data: CatalogItem[] = [
     price: 190,
   },
   {
+    id: 12,
     imgUrl: '../catalog-pictures/rolls/yamomoto.svg',
     title: 'Ямамото',
     weight: '330 г',
@@ -33,6 +37,7 @@ export const data: CatalogItem[] = [
     price: 190,
   },
   {
+    id: 13,
     imgUrl: '../catalog-pictures/rolls/zapechenaya-krevetka.svg',
     title: 'Запеченая креветка',
     weight: '350 г',
@@ -40,6 +45,7 @@ export const data: CatalogItem[] = [
     price: 190,
   },
   {
+    id: 14,
     imgUrl: '../catalog-pictures/rolls/sirnii-s-lososem.svg',
     title: 'Сырный с лососем',
     weight: '315 г',
@@ -48,6 +54,7 @@ export const data: CatalogItem[] = [
     price: 190,
   },
   {
+    id: 15,
     imgUrl: '../catalog-pictures/rolls/mikasa.svg',
     title: 'Микаса',
     weight: '235 г',
@@ -56,6 +63,7 @@ export const data: CatalogItem[] = [
     price: 190,
   },
   {
+    id: 16,
     imgUrl: '../catalog-pictures/rolls/kombo-filadelfia.svg',
     title: 'Комбо филадельфия',
     weight: '325 г',
