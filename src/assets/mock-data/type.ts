@@ -1,4 +1,5 @@
 export interface CatalogItem {
+  id: number;
   imgUrl: string;
   title: string;
   weight: string;
@@ -12,6 +13,7 @@ export interface CatalogItem {
 }
 
 export interface CatalogItemNapitok {
+  id: number;
   imgUrl: string;
   title: string;
   weight: string;

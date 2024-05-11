@@ -2,6 +2,7 @@ import { CatalogItem } from './type';
 
 export const data: CatalogItem[] = [
   {
+    id: 33,
     imgUrl: '../catalog-pictures/zakuski/tartar-iz-lososa-s-holopenio.svg',
     title: 'Тартар из лосося с халапеньо',
     weight: '180 г',
@@ -10,6 +11,7 @@ export const data: CatalogItem[] = [
     price: 190,
   },
   {
+    id: 34,
     imgUrl: '../catalog-pictures/zakuski/tartar-iz-lososa-s-avokado.svg',
     title: 'Тартар из лосося с авокадо',
     weight: '180 г',
@@ -18,6 +20,7 @@ export const data: CatalogItem[] = [
     price: 190,
   },
   {
+    id: 35,
     imgUrl: '../catalog-pictures/zakuski/salat-chuka-vakame.svg',
     title: 'Салат Чука-Вакаме',
     weight: '185 г',
@@ -26,6 +29,7 @@ export const data: CatalogItem[] = [
     price: 190,
   },
   {
+    id: 36,
     imgUrl: '../catalog-pictures/zakuski/salat-s-kinoa-avokado-i-kuritsei.svg',
     title: 'Салат с киноа, авокадо и курицей',
     weight: '252 г',
@@ -34,6 +38,7 @@ export const data: CatalogItem[] = [
     price: 190,
   },
   {
+    id: 37,
     imgUrl: '../catalog-pictures/zakuski/inari-s-tuncom-i-trufelem.svg',
     title: 'Инари с тунцом и трюфелем',
     weight: '60 г',
@@ -42,6 +47,7 @@ export const data: CatalogItem[] = [
     price: 190,
   },
   {
+    id: 38,
     imgUrl:
       '../catalog-pictures/zakuski/inari-s-morskim-grebeshkom-i-sirom.svg',
     title: 'Инари с морским гребешком и сыром',
@@ -51,6 +57,7 @@ export const data: CatalogItem[] = [
     price: 190,
   },
   {
+    id: 39,
     imgUrl: '../catalog-pictures/zakuski/inari-s-lososem-i-avokado.svg',
     title: 'Инари с лососем и авокадо',
     weight: '69 г',
@@ -58,6 +65,7 @@ export const data: CatalogItem[] = [
     price: 190,
   },
   {
+    id: 40,
     imgUrl: '../catalog-pictures/zakuski/tartar-miks.svg',
     title: 'Тартар микс',
     weight: '225 г',
