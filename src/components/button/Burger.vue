@@ -20,8 +20,8 @@ function toggleActive() {
 .burger {
   padding: 10px;
   background-color: $fon-fon-seryy;
-  margin-left: 4px;
   border-radius: 12px;
+  z-index: 100;
   &__wrapper {
     display: flex;
     flex-direction: column;

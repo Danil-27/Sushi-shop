@@ -31,6 +31,7 @@ const sourceButtons = ref<sourceButtonHeader[]>([
     display: flex;
     align-items: center;
     border: 1px solid $razdelitel-razdelitel-1;
+
     border-radius: 12px;
     padding: 10px;
     &:last-child {
@@ -77,4 +78,3 @@ const sourceButtons = ref<sourceButtonHeader[]>([
   }
 }
 </style>
-./type
