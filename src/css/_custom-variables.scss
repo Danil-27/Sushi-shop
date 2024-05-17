@@ -1,0 +1,17 @@
+// COLORS
+$accent-1: #00cc2d;
+$accent-2: #ff6633;
+
+// BG COLORS
+$bg-1: #ccf5d5;
+
+// BORDER-RADIUS
+$br-1: 12px;
+
+// LINE CLAMP
+.clamp-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
