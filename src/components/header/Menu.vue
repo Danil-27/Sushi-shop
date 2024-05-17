@@ -47,7 +47,7 @@ defineProps<{
   &__wrapper {
   }
   &__heading {
-    font-family: var(--font-family);
+    font-family: $Inter-500;
     font-weight: 700;
     font-size: 24px;
     line-height: 125%;

@@ -100,7 +100,7 @@
               />
             </svg>
           </button>
-          <Burger class="burger" @click="toggleMenu" />
+          <!-- <Burger class="burger" @click="toggleMenu" /> -->
         </div>
       </div>
     </div>
@@ -113,7 +113,7 @@ import { ref } from 'vue';
 import Logo from 'src/components/logo/Logo.vue';
 import NavBar from 'src/components/navigation/NavBar.vue';
 import Location from 'src/components/button/Location.vue';
-import Burger from 'src/components/button/Burger.vue';
+// import Burger from 'src/components/button/Burger.vue';
 import Menu from 'src/components/header/Menu.vue';
 import { myLink } from './type';
 
@@ -127,12 +127,13 @@ const links = ref<myLink[]>([
 let buttonCounter = ref<number>(1);
 let isMenu = ref<boolean>(false);
 
-function toggleMenu() {
-  isMenu.value ? (isMenu.value = false) : (isMenu.value = true);
-}
+// function toggleMenu() {
+//   isMenu.value ? (isMenu.value = false) : (isMenu.value = true);
+// }
 </script>
 
 <style scoped lang="scss">
+@import 'src/css/_general';
 .container {
   padding: 0 4px;
 }
@@ -141,7 +142,7 @@ function toggleMenu() {
   display: flex;
   align-items: center;
   padding: 4px 4px 6px 4px;
-  font-family: $Inter-Medium;
+  font-family: $Inter-500;
   &__wrapper {
     display: flex;
     align-items: center;
@@ -197,7 +198,7 @@ function toggleMenu() {
     display: none;
     transition: 0.4s;
     margin-right: 8px;
-    font-family: $Inter-Regular;
+    font-family: $Inter-400;
     color: $tekst-seryy-1;
   }
 }

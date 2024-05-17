@@ -1,0 +1,67 @@
+// COLORS
+$accent-1: #00cc2d;
+$accent-2: #ff6633;
+
+// BG COLORS
+$bg-1: #ccf5d5;
+
+// BORDER-RADIUS
+$br-1: 12px;
+
+// LINE CLAMP
+.clamp-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+// CONTAINER
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+@media screen and (min-width: 1608px) {
+  .container {
+    max-width: 1576px;
+    padding: 0;
+  }
+}
+
+// BACKGROUND
+body {
+  background-color: $fon-fon-seryy;
+}
+
+// RESET
+html,
+body {
+  font-size: 16px;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  background: transparent;
+}
