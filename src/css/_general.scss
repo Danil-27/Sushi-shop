@@ -15,3 +15,17 @@ $br-1: 12px;
   -webkit-line-clamp: 2;
   overflow: hidden;
 }
+
+// CONTAINER
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+@media screen and (min-width: 1608px) {
+  .container {
+    max-width: 1576px;
+    padding: 0;
+  }
+}
