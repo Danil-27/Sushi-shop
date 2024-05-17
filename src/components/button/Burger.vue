@@ -22,6 +22,7 @@ function toggleActive() {
   background-color: $fon-fon-seryy;
   border-radius: 12px;
   z-index: 100;
+  cursor: pointer;
   &__wrapper {
     display: flex;
     flex-direction: column;
@@ -29,7 +30,6 @@ function toggleActive() {
     gap: 3px 0px;
     width: 20px;
     height: 20px;
-    cursor: pointer;
     transition: 0.4s;
   }
 }

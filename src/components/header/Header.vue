@@ -4,7 +4,7 @@
       <div class="header__wrapper">
         <div class="logo"><Logo /></div>
         <nav class="nav">
-          <Location />
+          <Location class="location" />
           <NavBar class="navBar" :links="links" />
         </nav>
         <div class="button">
@@ -71,7 +71,7 @@
               />
             </svg>
           </button>
-          <button class="button__item">
+          <button class="button__item button_basket">
             <span class="button__text">Корзина</span>
             <svg
               width="25"
@@ -100,7 +100,7 @@
               />
             </svg>
           </button>
-          <!-- <Burger class="burger" @click="toggleMenu" /> -->
+          <Burger @click="toggleMenu" />
         </div>
       </div>
     </div>
@@ -113,7 +113,7 @@ import { ref } from 'vue';
 import Logo from 'src/components/logo/Logo.vue';
 import NavBar from 'src/components/navigation/NavBar.vue';
 import Location from 'src/components/button/Location.vue';
-// import Burger from 'src/components/button/Burger.vue';
+import Burger from 'src/components/button/Burger.vue';
 import Menu from 'src/components/header/Menu.vue';
 import { myLink } from './type';
 
@@ -127,20 +127,18 @@ const links = ref<myLink[]>([
 let buttonCounter = ref<number>(1);
 let isMenu = ref<boolean>(false);
 
-// function toggleMenu() {
-//   isMenu.value ? (isMenu.value = false) : (isMenu.value = true);
-// }
+function toggleMenu() {
+  document.body.classList.toggle('no-scroll');
+  isMenu.value ? (isMenu.value = false) : (isMenu.value = true);
+}
 </script>
 
 <style scoped lang="scss">
-@import 'src/css/_general';
 .container {
   padding: 0 4px;
 }
 
 .header {
-  display: flex;
-  align-items: center;
   padding: 4px 4px 6px 4px;
   font-family: $Inter-500;
   &__wrapper {
@@ -194,6 +192,9 @@ let isMenu = ref<boolean>(false);
     font-size: 12px;
     color: $white;
   }
+  &_basket {
+    display: none;
+  }
   &__text {
     display: none;
     transition: 0.4s;
@@ -209,29 +210,53 @@ let isMenu = ref<boolean>(false);
   align-items: center;
 }
 
+.nav {
+  flex-basis: auto;
+  // margin-left: 14px;
+}
+
+.location {
+  padding: 6px 8px;
+  margin: 0px 4px;
+}
+
 .navBar {
   display: none;
 }
 .navBar :deep(.navBar__menu) {
   display: flex;
-}
-.nav {
-  flex-basis: 100%;
-  margin-left: 14px;
+  gap: 0px 4px;
+  .navBar__item {
+    padding: 22px 8px;
+    cursor: pointer;
+  }
 }
 
-@media screen and (min-width: 480px) {
+// @media screen and (min-width: 480px) {
+//   // .nav {
+//   //   margin-left: 70px;
+//   // }
+// }
+@media screen and (min-width: 740px) {
   .nav {
-    margin-left: 70px;
+    flex-basis: 100%;
   }
 }
 
 @media screen and (min-width: 992px) {
+  .header {
+    &__wrapper {
+      min-height: 80px;
+    }
+  }
   .nav {
     flex-basis: auto;
     margin-left: 0px;
   }
 
+  .location {
+    padding: 22px 8px;
+  }
   .navBar {
     display: flex;
   }
@@ -240,18 +265,36 @@ let isMenu = ref<boolean>(false);
     &__item {
       padding: 16px;
     }
+    &_basket {
+      display: flex;
+    }
+  }
+}
+
+@media screen and (min-width: 1020px) {
+  .button {
+    gap: 0px 12px;
+  }
+}
+@media screen and (min-width: 1090px) {
+  .button {
     &__text {
       display: block;
     }
   }
-
-  .header {
-    &__wrapper {
-      min-height: 80px;
+}
+@media screen and (min-width: 1170px) {
+  .navBar :deep(.navBar__menu) {
+    display: flex;
+    gap: 0px 4px;
+    .navBar__item {
+      padding: 22px 18px;
+      cursor: pointer;
     }
   }
-  .button {
-    gap: 0px 12px;
+  .location {
+    padding: 22px 18px;
+    margin: 0px 4px;
   }
 }
 </style>

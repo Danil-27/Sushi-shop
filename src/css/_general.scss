@@ -23,13 +23,16 @@ $br-1: 12px;
   padding: 0 16px;
 }
 
-@media screen and (min-width: 1608px) {
+@media screen and (min-width: 1576px) {
   .container {
     max-width: 1576px;
     padding: 0;
   }
 }
-
+// NO SCROLL
+.no-scroll {
+  overflow: hidden;
+}
 // BACKGROUND
 body {
   background-color: $fon-fon-seryy;
