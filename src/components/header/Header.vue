@@ -168,13 +168,13 @@ function toggleMenu() {
     padding: 10px;
     transition: 0.4s;
     &:hover {
+      background-color: $akcentnyy-akcentnyy-2;
       svg > path {
         fill: $white;
       }
       .button__text {
         color: $white;
       }
-      background-color: $akcentnyy-akcentnyy-2;
     }
     &:nth-child(1) {
       position: relative;
@@ -192,11 +192,11 @@ function toggleMenu() {
     font-size: 12px;
     color: $white;
   }
+  &__text,
   &_basket {
     display: none;
   }
   &__text {
-    display: none;
     transition: 0.4s;
     margin-right: 8px;
     font-family: $Inter-400;
@@ -212,7 +212,10 @@ function toggleMenu() {
 
 .nav {
   flex-basis: auto;
-  // margin-left: 14px;
+}
+
+.navBar {
+  display: none;
 }
 
 .location {
@@ -220,23 +223,22 @@ function toggleMenu() {
   margin: 0px 4px;
 }
 
-.navBar {
-  display: none;
-}
 .navBar :deep(.navBar__menu) {
   display: flex;
   gap: 0px 4px;
   .navBar__item {
-    padding: 22px 8px;
-    cursor: pointer;
+    padding-left: 8px;
+    padding-right: 8px;
+    .navBar__link {
+      padding-top: 16px;
+      padding-bottom: 16px;
+      font-family: $Inter-500;
+      color: $cvetnye-chernyy;
+      cursor: pointer;
+    }
   }
 }
 
-// @media screen and (min-width: 480px) {
-//   // .nav {
-//   //   margin-left: 70px;
-//   // }
-// }
 @media screen and (min-width: 740px) {
   .nav {
     flex-basis: 100%;
@@ -249,14 +251,16 @@ function toggleMenu() {
       min-height: 80px;
     }
   }
+
   .nav {
     flex-basis: auto;
-    margin-left: 0px;
   }
 
   .location {
-    padding: 22px 8px;
+    padding-left: 8px;
+    padding-right: 8px;
   }
+
   .navBar {
     display: flex;
   }
@@ -276,6 +280,7 @@ function toggleMenu() {
     gap: 0px 12px;
   }
 }
+
 @media screen and (min-width: 1090px) {
   .button {
     &__text {
@@ -283,18 +288,20 @@ function toggleMenu() {
     }
   }
 }
+
 @media screen and (min-width: 1170px) {
   .navBar :deep(.navBar__menu) {
     display: flex;
     gap: 0px 4px;
     .navBar__item {
-      padding: 22px 18px;
-      cursor: pointer;
+      padding-left: 18px;
+      padding-right: 18px;
     }
   }
+
   .location {
-    padding: 22px 18px;
-    margin: 0px 4px;
+    padding-left: 18px;
+    padding-right: 18px;
   }
 }
 </style>
