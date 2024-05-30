@@ -1,11 +1,12 @@
 <template>
-  <div class="menu" :class="{ open: isMenu, closed: !isMenu }">
+  <div class="menu" :class="{ open: isMenu }">
     <div class="menu__wrapper">
       <h2 class="menu__heading">Меню</h2>
       <NavBar ref="navBarElem" :links="links" />
     </div>
   </div>
-  <div class="die" :class="{ visible: isMenu, inVisible: !isMenu }"></div>
+
+  <div class="die" :class="{ visible: isMenu }"></div>
 </template>
 
 <script lang="ts" setup>
@@ -14,7 +15,6 @@ import { defineProps, ref } from 'vue';
 import { myLink } from 'src/components/header/type';
 
 const navBarElem = ref(null);
-
 const links = ref<myLink[]>([
   { id: 1, name: 'Повторить прошлый заказ', link: '/Home' },
   { id: 2, name: 'Избранное', link: '/Delivery' },
@@ -33,19 +33,16 @@ defineProps<{
 <style lang="scss" scoped>
 .menu {
   position: absolute;
-  right: 50%;
-  transform: translateX(50%);
-  top: 0%;
-  width: calc(100% - 4px);
-  height: calc(100% - 4px);
+  top: -100vh;
+  right: 0;
+  width: 100%;
+  height: calc(100vh - 10px);
   padding: 18px;
   border-radius: 12px;
-  z-index: 10;
-  transition: 1s;
+  overflow-y: auto;
   background-color: $section;
-  overflow-y: scroll;
-  &__wrapper {
-  }
+  z-index: $z-menu;
+  transition: 1s;
   &__heading {
     font-family: $Inter-500;
     font-weight: 700;
@@ -56,31 +53,24 @@ defineProps<{
 }
 
 .menu.open {
-  top: 50%;
-  right: 50%;
-  transform: translate(50%, -50%);
-}
-.menu.closed {
-  top: -100%;
+  top: 0;
 }
 
 .die {
   position: absolute;
   right: 0;
-  top: 0;
-  width: 0%;
-  height: 0%;
+  top: -4px;
+  width: 0vw;
+  height: 0vh;
   z-index: 9;
   background-color: rgba(26, 26, 26, 0.4);
-  transition: 1s opacity;
   opacity: 0;
+  transition: 1s opacity;
 }
 .die.visible {
-  width: 100%;
-  height: 100%;
+  right: -8px;
+  width: calc(100% + 16px);
+  height: 100vh;
   opacity: 1;
-}
-.die.isVisible {
-  opacity: 0;
 }
 </style>

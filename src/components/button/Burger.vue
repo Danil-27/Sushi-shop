@@ -1,5 +1,5 @@
 <template>
-  <div class="burger" :class="{ active: isActive }" @click="toggleActive">
+  <div class="burger" :class="{ active: props.isMenu }">
     <div class="burger__wrapper">
       <span class="burger__icon"></span>
       <span class="burger__icon"></span>
@@ -8,12 +8,11 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { defineProps } from 'vue';
 
-let isActive = ref<boolean>(false);
-function toggleActive() {
-  isActive.value = !isActive.value;
-}
+const props = defineProps<{
+  isMenu: boolean;
+}>();
 </script>
 
 <style lang="scss" scoped>
@@ -21,7 +20,7 @@ function toggleActive() {
   padding: 10px;
   background-color: $fon-fon-seryy;
   border-radius: 12px;
-  z-index: 100;
+  z-index: $z-burger;
   cursor: pointer;
   &__wrapper {
     display: flex;

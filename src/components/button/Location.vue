@@ -1,20 +1,31 @@
 <template>
-  <div class="place">
+  <div class="location">
     <img src="src/assets/images/icons/place.svg" alt="" />
-    <p class="place__text">Киев</p>
-    <p class="place__text">RU</p>
+    <p>Киев</p>
+    <p>RU</p>
   </div>
 </template>
 <script lang="ts" setup></script>
 
 <style lang="scss" scoped>
-.place {
+.location {
   display: none;
   gap: 0px 5px;
+  cursor: pointer;
 }
 @media screen and (min-width: 410px) {
-  .place {
+  .location {
     display: flex;
+  }
+}
+@media screen and (max-width: 992px) {
+  .location {
+    margin-left: 18px;
+  }
+}
+@media screen and (max-width: 740) {
+  .location {
+    margin-left: 0px;
   }
 }
 </style>
