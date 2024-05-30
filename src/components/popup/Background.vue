@@ -4,17 +4,17 @@
 <script lang="ts" setup>
 import { defineProps, defineEmits } from 'vue';
 const props = defineProps<{
-  isPopup: boolean;
+  parentRemoveСlassNoScroll: () => void;
   idBtn: number | null;
 }>();
 
 const emit = defineEmits<{
-  (event: 'update:isPopup', value: boolean): void;
+  (event: 'update:idBtn', value: number | null): void;
 }>();
 
 function handleClick() {
-  document.body.classList.toggle('no-scroll');
-  emit('update:isPopup', !props.isPopup);
+  props.parentRemoveСlassNoScroll();
+  emit('update:idBtn', null);
 }
 </script>
 

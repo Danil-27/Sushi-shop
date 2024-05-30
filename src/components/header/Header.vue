@@ -4,17 +4,16 @@
       <Background
         v-show="idBtn !== null"
         :idBtn="idBtn"
-        :isPopup="isPopup"
-        @update:isPopup="updateIsPopup"
+        :parentRemoveСlassNoScroll="removeСlassNoScroll"
+        @update:idBtn="updateIdBtn"
       />
     </transition>
 
     <div id="container" class="container">
       <Popup
-        v-if="widthInner > 992"
+        v-if="screenWidth > 992"
         :idBtn="idBtn"
-        :isPopup="isPopup"
-        @update:isPopup="updateIsPopup"
+        @update:idBtn="updateIdBtn"
       />
       <div class="header__wrapper">
         <div class="logo"><Logo /></div>
@@ -24,7 +23,7 @@
         </nav>
         <div class="button">
           <button
-            v-if="widthInner > 992"
+            v-if="screenWidth > 992"
             id="1"
             :class="{ isActive: 1 === idBtn }"
             class="button__item"
@@ -49,7 +48,7 @@
             </button>
           </router-link>
           <button
-            v-if="widthInner > 992"
+            v-if="screenWidth > 992"
             id="2"
             :class="{ isActive: 2 === idBtn }"
             class="button__item"
@@ -67,7 +66,7 @@
             </button>
           </router-link>
           <button
-            v-if="widthInner > 992"
+            v-if="screenWidth > 992"
             id="3"
             :class="{ isActive: 3 === idBtn }"
             class="button__item"
@@ -85,7 +84,7 @@
             </button>
           </router-link>
           <button
-            v-if="widthInner > 992"
+            v-if="screenWidth > 992"
             id="4"
             :class="{ isActive: 4 === idBtn }"
             class="button__item button_basket"
@@ -104,15 +103,14 @@
               <Basket />
             </button>
           </router-link>
-          <Menu v-if="widthInner < 992" :isMenu="isMenu" />
+          <Menu v-if="screenWidth < 992" :isMenu="isMenu" />
           <Burger :isMenu="isMenu" @click="toggleMenu" />
         </div>
       </div>
     </div>
     <div class="Var">
-      <div>Resizedwatch : {{ widthInner }}</div>
+      <div>Resizedwatch : {{ screenWidth }}</div>
       <div>id-Btn :{{ idBtn }}</div>
-      <div>is Order :{{ isPopup }}</div>
       <div>is Menu :{{ isMenu }}</div>
     </div>
   </div>
@@ -138,8 +136,10 @@ import {
   Notices,
 } from 'src/components/header/index';
 
-console.log(widthWindow);
-
+let buttonCounter = ref<number>(1);
+let isMenu = ref<boolean>(false);
+let idBtn = ref<number | null>(null);
+let screenWidth = ref<number>(widthWindow.value);
 const router = useRouter();
 const links = ref<myLink[]>([
   { id: 1, name: 'Главная', link: '/Home' },
@@ -148,55 +148,48 @@ const links = ref<myLink[]>([
   { id: 4, name: 'Новости', link: '/News' },
 ]);
 
-let buttonCounter = ref<number>(1);
-let isMenu = ref<boolean>(false);
-let isPopup = ref<boolean>(false);
-let idBtn = ref<number | null>(null);
-let widthInner = ref<number>(widthWindow.value);
-
-watch(widthWindow, (newValue) => {
-  widthInner.value = newValue;
-  isPopup.value = false;
-  idBtn.value = null;
-  isMenu.value = false;
-  noScroll();
-
-  console.log('widthInner:', widthInner.value);
-  if (newValue > 992) {
-  }
-});
-
-function noScroll() {
+function removeСlassNoScroll() {
   if (document.body.classList.contains('no-scroll')) {
-    document.body.classList.toggle('no-scroll');
-    console.log('присутствует но скролл');
-  } else {
-    // document.body.classList.toggle('no-scroll');
-    console.log('нет но скролл');
+    document.body.classList.remove('no-scroll');
+    console.log('присутствует ноу скролл');
+  }
+}
+function addСlassNoScroll() {
+  if (!document.body.classList.contains('no-scroll')) {
+    document.body.classList.add('no-scroll');
+    console.log('присутствует ноу скролл');
   }
 }
 
 function toggleMenu() {
   if (isMenu.value === false) {
     isMenu.value = true;
-    document.body.classList.toggle('no-scroll');
+    addСlassNoScroll();
   } else {
     isMenu.value = false;
-    document.body.classList.toggle('no-scroll');
+    removeСlassNoScroll();
   }
 }
 
-function updateIsPopup(value: boolean) {
+watch(widthWindow, (newValue) => {
+  screenWidth.value = newValue;
   idBtn.value = null;
-  isPopup.value = value;
+  isMenu.value = false;
+  removeСlassNoScroll();
+
+  console.log('screenWidth:', screenWidth.value);
+});
+
+function updateIdBtn(value: number | null) {
+  idBtn.value = value;
 }
 
 function handleClick(event: Event) {
   const target = event.currentTarget as HTMLElement;
   const clickedElementId = target.id;
   idBtn.value = +clickedElementId;
-  console.log(widthInner.value, 'if (992 > widthInner.value) {');
-  if (992 > widthInner.value) {
+  console.log(screenWidth.value, 'if (992 > screenWidth.value) {');
+  if (992 > screenWidth.value) {
     idBtn.value = null;
     router.push('/');
     if (document.body.classList.contains('no-scroll')) {
@@ -207,7 +200,7 @@ function handleClick(event: Event) {
     document.body.classList.toggle('no-scroll');
   }
   console.log('Clicked element ID:', clickedElementId);
-  console.log(widthInner.value);
+  console.log(screenWidth.value);
 }
 </script>
 

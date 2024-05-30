@@ -1,13 +1,13 @@
 <template>
   <Header />
   <router-view />
-  <div class="lorem1">
+  <div class="lorem1 container">
     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum voluptatem
     libero labore provident iusto sunt magnam illum delectus, nisi asperiores
     aliquam? Exercitationem voluptate ab dicta soluta fuga provident, ipsum
     consectetur!
   </div>
-  <div class="lorem2">
+  <div class="lorem2 container">
     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium
     eligendi inventore ullam? Enim veritatis corporis ullam, explicabo,
     consequatur cupiditate esse distinctio impedit perspiciatis similique
@@ -20,7 +20,7 @@
     facilis dolorum perferendis blanditiis aspernatur veniam dolor ratione! Ut
     animi fugiat inventore earum tempore? Dicta aut iure nisi ad?
   </div>
-  <Footer />
+  <Footer class="container" />
 </template>
 
 <script setup lang="ts">

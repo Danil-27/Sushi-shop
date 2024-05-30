@@ -18,6 +18,11 @@
 <script lang="ts" setup></script>
 
 <style lang="scss" scoped>
+svg {
+  width: 20px;
+  height: 20px;
+}
+
 path {
   transition: 0.4s;
 }
@@ -26,5 +31,11 @@ path {
 }
 .button__item.isActive > svg > path {
   fill: $white;
+}
+@media screen and (min-width: 425px) {
+  svg {
+    width: 24px;
+    height: 24px;
+  }
 }
 </style>
