@@ -27,7 +27,7 @@
             id="1"
             :class="{ isActive: 1 === idBtn }"
             class="button__item"
-            @click="handleClick"
+            @click="buttonClick"
           >
             <div v-if="buttonCounter == 1" class="button__counter">
               {{ buttonCounter }}
@@ -52,7 +52,7 @@
             id="2"
             :class="{ isActive: 2 === idBtn }"
             class="button__item"
-            @click="handleClick"
+            @click="buttonClick"
           >
             <Liked />
           </button>
@@ -70,7 +70,7 @@
             id="3"
             :class="{ isActive: 3 === idBtn }"
             class="button__item"
-            @click="handleClick"
+            @click="buttonClick"
           >
             <MyPage />
           </button>
@@ -88,7 +88,7 @@
             id="4"
             :class="{ isActive: 4 === idBtn }"
             class="button__item button_basket"
-            @click="handleClick"
+            @click="buttonClick"
           >
             <span class="button__text">Корзина</span>
             <Basket />
@@ -112,7 +112,7 @@
       <div>Resizedwatch : {{ screenWidth }}</div>
       <div>id-Btn :{{ idBtn }}</div>
       <div>is Menu :{{ isMenu }}</div>
-      <div>is scrollbar :</div>
+      <div>is NoScroll :{{ isContainsNoScroll }}</div>
     </div>
   </div>
 </template>
@@ -121,7 +121,6 @@
 import {
   ref,
   watch,
-  useRouter,
   myLink,
   widthWindow,
   Logo,
@@ -137,23 +136,14 @@ import {
   Notices,
 } from 'src/components/header/index';
 
-// console.log(getScrollbarWidth(), 'header');
-
-// function setScrollbarWidthCSSVariable() {
-//   const scrollbarWidth = getScrollbarWidth();
-//   console.log(scrollbarWidth, 'setProperty');
-//   document.documentElement.style.setProperty(
-//     '--scrollbar-width',
-//     `${scrollbarWidth}px`
-//   );
-// }
-// setScrollbarWidthCSSVariable();
-
 let buttonCounter = ref<number>(1);
 let isMenu = ref<boolean>(false);
 let idBtn = ref<number | null>(null);
 let screenWidth = ref<number>(widthWindow.value);
-const router = useRouter();
+let isContainsNoScroll = ref<boolean>(
+  document.body.classList.contains('no-scroll')
+);
+
 const links = ref<myLink[]>([
   { id: 1, name: 'Главная', link: '/Home' },
   { id: 2, name: 'Доставка', link: '/Delivery' },
@@ -161,59 +151,46 @@ const links = ref<myLink[]>([
   { id: 4, name: 'Новости', link: '/News' },
 ]);
 
-function removeСlassNoScroll() {
-  if (document.body.classList.contains('no-scroll')) {
-    document.body.classList.remove('no-scroll');
-    console.log('присутствует ноу скролл');
-  }
-}
-function addСlassNoScroll() {
-  if (!document.body.classList.contains('no-scroll')) {
-    document.body.classList.add('no-scroll');
-    console.log('присутствует ноу скролл');
-  }
-}
-
-function toggleMenu() {
-  if (isMenu.value === false) {
-    isMenu.value = true;
-    addСlassNoScroll();
-  } else {
-    isMenu.value = false;
-    removeСlassNoScroll();
-  }
-}
-
 watch(widthWindow, (newValue) => {
   screenWidth.value = newValue;
   idBtn.value = null;
   isMenu.value = false;
   removeСlassNoScroll();
-
-  console.log('screenWidth:', screenWidth.value);
 });
 
 function updateIdBtn(value: number | null) {
   idBtn.value = value;
 }
 
-function handleClick(event: Event) {
+function updateIsContainsNoScroll() {
+  isContainsNoScroll.value = document.body.classList.contains('no-scroll');
+}
+
+function removeСlassNoScroll() {
+  if (isContainsNoScroll.value) {
+    document.body.classList.remove('no-scroll');
+    updateIsContainsNoScroll();
+  }
+}
+
+function addСlassNoScroll() {
+  if (!isContainsNoScroll.value) {
+    document.body.classList.add('no-scroll');
+    updateIsContainsNoScroll();
+  }
+}
+
+function toggleMenu() {
+  (isMenu.value = !isMenu.value) ? addСlassNoScroll() : removeСlassNoScroll();
+}
+
+function buttonClick(event: Event) {
   const target = event.currentTarget as HTMLElement;
   const clickedElementId = target.id;
   idBtn.value = +clickedElementId;
-  console.log(screenWidth.value, 'if (992 > screenWidth.value) {');
-  if (992 > screenWidth.value) {
-    idBtn.value = null;
-    router.push('/');
-    if (document.body.classList.contains('no-scroll')) {
-      document.body.classList.toggle('no-scroll');
-    }
+  if (!isContainsNoScroll.value) {
+    addСlassNoScroll();
   }
-  if (!document.body.classList.contains('no-scroll')) {
-    document.body.classList.toggle('no-scroll');
-  }
-  console.log('Clicked element ID:', clickedElementId);
-  console.log(screenWidth.value);
 }
 </script>
 
