@@ -29,7 +29,7 @@ const props = defineProps<{
     gap: 3px 0px;
     width: 20px;
     height: 20px;
-    transition: 0.4s;
+    transition: 0.4s ease;
   }
 }
 
@@ -37,7 +37,7 @@ const props = defineProps<{
   width: 100%;
   height: 2px;
   background-color: #252424;
-  transition: 0.4s;
+  transition: 0.4s ease;
 }
 
 .burger.active .burger__icon:nth-child(1) {

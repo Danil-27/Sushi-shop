@@ -1,7 +1,8 @@
 import { ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { myLink } from './type';
-import { widthWindow } from './debounce';
+import { widthWindow } from 'src//helpers/debounce';
+import { setScrollbarWidthCSSVariable } from 'src/helpers/newCssVar';
 import Logo from 'src/components/logo/Logo.vue';
 import NavBar from 'src/components/navigation/NavBar.vue';
 import Location from 'src/components/button/Location.vue';
@@ -13,6 +14,8 @@ import Basket from 'src/components/SVG/Basket.vue';
 import MyPage from 'src/components/SVG/MyPage.vue';
 import Liked from 'src/components/SVG/Liked.vue';
 import Notices from 'src/components/SVG/Notices.vue';
+
+setScrollbarWidthCSSVariable();
 
 export type { myLink };
 export {

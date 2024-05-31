@@ -21,7 +21,7 @@ function handleClick() {
 <style lang="scss" scoped>
 .v-enter-active,
 .v-leave-active {
-  transition: opacity 0.3s ease;
+  transition: opacity 0.4s ease;
 }
 
 .v-enter-from,
@@ -29,11 +29,11 @@ function handleClick() {
   opacity: 0;
 }
 .background {
-  position: absolute;
-  z-index: -1;
-  right: 0;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100vw + $scrollbarWidth);
   top: 0;
-  width: 100vw;
   height: 100vh;
   z-index: $z-order;
   background-color: rgba(26, 26, 26, 0.4);

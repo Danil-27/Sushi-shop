@@ -112,6 +112,7 @@
       <div>Resizedwatch : {{ screenWidth }}</div>
       <div>id-Btn :{{ idBtn }}</div>
       <div>is Menu :{{ isMenu }}</div>
+      <div>is scrollbar :</div>
     </div>
   </div>
 </template>
@@ -135,6 +136,18 @@ import {
   Liked,
   Notices,
 } from 'src/components/header/index';
+
+// console.log(getScrollbarWidth(), 'header');
+
+// function setScrollbarWidthCSSVariable() {
+//   const scrollbarWidth = getScrollbarWidth();
+//   console.log(scrollbarWidth, 'setProperty');
+//   document.documentElement.style.setProperty(
+//     '--scrollbar-width',
+//     `${scrollbarWidth}px`
+//   );
+// }
+// setScrollbarWidthCSSVariable();
 
 let buttonCounter = ref<number>(1);
 let isMenu = ref<boolean>(false);
@@ -273,7 +286,7 @@ function handleClick(event: Event) {
     border: 1px solid $razdelitel-razdelitel-1;
     border-radius: 12px;
     padding: 10px;
-    transition: 0.4s;
+    transition: 0.4s ease;
     &:hover {
       background-color: $akcentnyy-akcentnyy-2;
       .button__text {
@@ -307,7 +320,7 @@ function handleClick(event: Event) {
     display: none;
   }
   &__text {
-    transition: 0.4s;
+    transition: 0.4s ease;
     margin-right: 8px;
     font-family: $Inter-400;
     color: $tekst-seryy-1;

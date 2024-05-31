@@ -30,7 +30,7 @@ svg {
 }
 
 path {
-  transition: 0.4s;
+  transition: 0.4s ease;
 }
 .button__item:hover > svg > path {
   fill: $white;

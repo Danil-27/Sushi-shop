@@ -9,6 +9,20 @@
       <div class="popup__close" @click="handleClick">close</div>
       <div>popup {{ idBtn }}</div>
       <div class="popup__add" @click="handleClick">добавить товар</div>
+      <div>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt facere
+        autem sint, atque possimus sed vitae esse explicabo excepturi quia
+        officiis provident totam a ut ratione saepe quaerat accusantium deleniti
+        omnis consectetur, voluptatem qui alias necessitatibus maiores!
+        Consequatur, expedita alias dolores vitae sint sunt minus cumque
+        obcaecati quidem? Quod cumque, molestiae laboriosam enim quasi
+        voluptates, exercitationem hic doloribus aliquam commodi totam vel
+        aspernatur reprehenderit ut eveniet pariatur numquam sunt, excepturi
+        animi. Voluptatum fuga at accusantium sed temporibus, perferendis
+        commodi aliquid rerum ducimus adipisci cupiditate quia? Ex dignissimos
+        possimus totam! Recusandae eligendi saepe eos veniam quam explicabo eius
+        necessitatibus dolorem repellendus?
+      </div>
     </div>
   </div>
 </template>
@@ -48,8 +62,11 @@ function handleClick() {
   &__wrapper {
     position: absolute;
     width: 590px;
-    height: 70vh;
-    margin-right: 7px;
+    height: calc(100vh - 150px);
+    padding: 30px;
+    border-radius: 12px;
+    overflow-y: hidden;
+    margin-right: calc(4px + $scrollbarWidth);
     background-color: $white;
   }
 }
@@ -58,12 +75,15 @@ function handleClick() {
   .popup {
     transform: translateX(100vw);
     transition-property: right;
-    transition: 0.4s;
+    transition: 0.4s ease;
   }
 }
 
 .activePopup {
   transform: translateX(0vw);
+  .popup__wrapper {
+    overflow-y: auto;
+  }
 }
 
 .popup .popup__close {

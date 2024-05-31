@@ -32,6 +32,7 @@ $br-1: 12px;
 // NO SCROLL
 .no-scroll {
   overflow: hidden;
+  padding-right: $scrollbarWidth;
 }
 // BACKGROUND
 body {
