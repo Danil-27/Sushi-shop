@@ -33,7 +33,11 @@
             class="button__item"
             @click="clickButton"
           >
-            <div v-if="buttonCounter == 1" class="button__counter">
+            <div
+              v-if="buttonCounter > 0"
+              :class="{ isActiveCounter: 1 === idBtn }"
+              class="button__counter"
+            >
               {{ buttonCounter }}
             </div>
             <Notices />
@@ -44,7 +48,11 @@
               :class="{ isActive: 1 === idBtn }"
               class="button__item"
             >
-              <div v-if="buttonCounter == 1" class="button__counter">
+              <div
+                v-if="buttonCounter > 0"
+                class="button__counter"
+                :class="{ isActiveCounter: 1 === idBtn }"
+              >
                 {{ buttonCounter }}
               </div>
 
@@ -340,6 +348,12 @@ function clickLinkNavBar(event: Event): void {
     border-radius: 50%;
     font-size: 12px;
     color: $white;
+    transition: 0.4s ease;
+  }
+  .button__counter.isActiveCounter {
+    border: 1px solid $akcentnyy-akcentnyy-2;
+    background-color: $white;
+    color: $akcentnyy-akcentnyy-2;
   }
   &__text,
   &_basket {
