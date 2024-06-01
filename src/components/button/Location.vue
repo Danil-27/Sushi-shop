@@ -9,6 +9,7 @@
 
 <style lang="scss" scoped>
 .location {
+  color: $cvetnye-chernyy;
   display: none;
   gap: 0px 5px;
   cursor: pointer;

@@ -5,7 +5,7 @@
         v-show="idBtn !== null"
         :idBtn="idBtn"
         :parentRemoveСlassNoScroll="removeСlassNoScroll"
-        @update:idBtn="updateIdBtn"
+        @update:idBtn="updateIdButton"
       />
     </transition>
 
@@ -13,13 +13,17 @@
       <Popup
         v-if="screenWidth > 992"
         :idBtn="idBtn"
-        @update:idBtn="updateIdBtn"
+        @update:idBtn="updateIdButton"
       />
       <div class="header__wrapper">
         <div class="logo"><Logo /></div>
         <nav class="nav">
-          <Location />
-          <NavBar :links="links" @click="ClickLinkNavBar" />
+          <LocationPopup :isLocation />
+          <Location v-if="screenWidth > 992" @click="clickLocation"> </Location>
+          <router-link v-else to="/LocationPage">
+            <Location />
+          </router-link>
+          <NavBar :links="links" @click="clickLinkNavBar" />
         </nav>
         <div class="button">
           <button
@@ -114,9 +118,7 @@
     </div>
     <div class="Var">
       <div>Resizedwatch : {{ screenWidth }}</div>
-      <div>id-Btn :{{ idBtn }}</div>
-      <div>is Menu :{{ isMenu }}</div>
-      <div>is NoScroll :{{ isContainsNoScroll }}</div>
+      <div>isLocation {{ isLocation }}</div>
     </div>
   </div>
 </template>
@@ -133,6 +135,7 @@ import {
   Burger,
   Menu,
   Popup,
+  LocationPopup,
   Background,
   Basket,
   MyPage,
@@ -141,6 +144,7 @@ import {
 } from 'src/components/header/index';
 
 let buttonCounter = ref<number>(1);
+let isLocation = ref<boolean>(false);
 let isMenu = ref<boolean>(false);
 let idBtn = ref<number | null>(null);
 let screenWidth = ref<number>(widthWindow.value);
@@ -159,25 +163,9 @@ watch(widthWindow, (newValue) => {
   screenWidth.value = newValue;
   idBtn.value = null;
   isMenu.value = false;
+  isLocation.value = false;
   removeСlassNoScroll();
 });
-
-function updateIdBtn(value: number | null) {
-  idBtn.value = value;
-}
-
-function toggleMenu() {
-  if ((isMenu.value = !isMenu.value)) {
-    addСlassNoScroll();
-  } else {
-    removeСlassNoScroll();
-  }
-}
-
-function updateIsMenu(value: boolean) {
-  isMenu.value = value;
-  removeСlassNoScroll();
-}
 
 function updateIsContainsNoScroll() {
   isContainsNoScroll.value = document.body.classList.contains('no-scroll');
@@ -198,6 +186,43 @@ function addСlassNoScroll() {
   }
 }
 
+function eventListenerLocation(event: Event) {
+  const target = event.target as HTMLElement;
+  console.log('clik :', target);
+  if (!target.closest('.LocationPopup') && !target.closest('.location')) {
+    isLocation.value = false;
+    if (!isLocation.value) {
+      document.removeEventListener('click', eventListenerLocation);
+    }
+  }
+}
+
+function clickLocation(event: Event): void {
+  const location = event.currentTarget as HTMLElement;
+  console.log('location', location);
+  isLocation.value = !isLocation.value;
+  if (isLocation.value) {
+    document.addEventListener('click', eventListenerLocation);
+  }
+}
+
+function updateIsMenu(value: boolean) {
+  isMenu.value = value;
+  removeСlassNoScroll();
+}
+
+function toggleMenu() {
+  if ((isMenu.value = !isMenu.value)) {
+    addСlassNoScroll();
+  } else {
+    removeСlassNoScroll();
+  }
+}
+
+function updateIdButton(value: number | null) {
+  idBtn.value = value;
+}
+
 function clickButton(event: Event): void {
   const button = event.currentTarget as HTMLElement;
   const clickedElementId = button.id;
@@ -207,7 +232,7 @@ function clickButton(event: Event): void {
   }
 }
 
-function ClickLinkNavBar(event: Event): void {
+function clickLinkNavBar(event: Event): void {
   const navbar = event.target as HTMLElement;
   if (navbar.closest('.navBar__link')) {
     if (isContainsNoScroll.value) {

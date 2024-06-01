@@ -50,7 +50,7 @@ function handleClick() {
 <style lang="scss" scoped>
 .popup {
   position: fixed;
-  top: 100px;
+  top: 93px;
   transform: translateX(1000vw);
   width: 100%;
   margin: 0 auto;

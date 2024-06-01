@@ -5,15 +5,15 @@ const routes: RouteRecordRaw[] = [
   {
     name: 'Home',
     path: '/',
-    component: () => import('src//layouts/MainLayout.vue'),
+    component: () => import('src/layouts/MainLayout.vue'),
     children: [
       {
         path: '/Home',
-        component: () => import('src//pages/Home.vue'),
+        component: () => import('src/pages/Home.vue'),
       },
       {
         path: '/Delivery',
-        component: () => import('src//pages/Delivery.vue'),
+        component: () => import('src/pages/Delivery.vue'),
       },
       {
         path: '/About',
@@ -21,11 +21,11 @@ const routes: RouteRecordRaw[] = [
       },
       {
         path: '/News',
-        component: () => import('src//pages/News.vue'),
+        component: () => import('src/pages/News.vue'),
       },
       {
         path: '/Notices',
-        component: () => import('src//pages/Notices.vue'),
+        component: () => import('src/pages/Notices.vue'),
       },
       {
         path: '/Liked',
@@ -33,19 +33,23 @@ const routes: RouteRecordRaw[] = [
       },
       {
         path: '/MyPage',
-        component: () => import('src//pages/MyPage.vue'),
+        component: () => import('src/pages/MyPage.vue'),
       },
       {
         path: '/Basket',
-        component: () => import('src//pages/Basket.vue'),
+        component: () => import('src/pages/Basket.vue'),
       },
       {
         path: '/Menu',
-        component: () => import('src//pages/Menu.vue'),
+        component: () => import('src/pages/Menu.vue'),
       },
       {
         path: '/Vacancies',
-        component: () => import('src//pages/Vacancies.vue'),
+        component: () => import('src/pages/Vacancies.vue'),
+      },
+      {
+        path: '/LocationPage',
+        component: () => import('src/pages/LocationPage.vue'),
       },
     ],
   },
