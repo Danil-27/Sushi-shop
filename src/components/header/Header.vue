@@ -16,14 +16,14 @@
         @update:idBtn="updateIdButton"
       />
       <div class="header__wrapper">
-        <div class="logo"><Logo /></div>
+        <router-link class="logo" to="/"><Logo /></router-link>
         <nav class="nav">
           <LocationPopup :isLocation />
           <Location v-if="screenWidth > 992" @click="clickLocation"> </Location>
           <router-link v-else to="/LocationPage">
             <Location />
           </router-link>
-          <NavBar :links="links" @click="clickLinkNavBar" />
+          <NavBar :links="links" @click="clickClosePopup" />
         </nav>
         <div class="button">
           <button
@@ -126,7 +126,8 @@
     </div>
     <div class="Var">
       <div>Resizedwatch : {{ screenWidth }}</div>
-      <div>isLocation {{ isLocation }}</div>
+      <div>is Location {{ isLocation }}</div>
+      <div>is Navdar {{ isNavdar }}</div>
     </div>
   </div>
 </template>
@@ -152,6 +153,7 @@ import {
 } from 'src/components/header/index';
 
 let buttonCounter = ref<number>(1);
+let isNavdar = ref<boolean>(false);
 let isLocation = ref<boolean>(false);
 let isMenu = ref<boolean>(false);
 let idBtn = ref<number | null>(null);
@@ -240,9 +242,11 @@ function clickButton(event: Event): void {
   }
 }
 
-function clickLinkNavBar(event: Event): void {
+function clickClosePopup(event: Event): void {
   const navbar = event.target as HTMLElement;
+  // console.log(navbar);
   if (navbar.closest('.navBar__link')) {
+    navbar.closest('.navBar__link')?.classList.add('navBar_active');
     if (isContainsNoScroll.value) {
       idBtn.value = null;
       removeСlassNoScroll();
@@ -322,6 +326,7 @@ function clickLinkNavBar(event: Event): void {
     padding: 10px;
     transition: 0.4s ease;
     &:hover {
+      border: 1px solid $akcentnyy-akcentnyy-2;
       background-color: $akcentnyy-akcentnyy-2;
       .button__text {
         color: $white;
@@ -382,10 +387,25 @@ function clickLinkNavBar(event: Event): void {
 
   .nav {
     flex-basis: auto;
+    gap: 0 6px;
   }
 
   .navBar {
     display: flex;
+  }
+  .navBar :deep(.navBar__menu) {
+    gap: 0 6px;
+    .navBar__link {
+      transition: background-color 0.4s ease, color 0.4s ease;
+      border-radius: 12px;
+      padding: 12px 8px;
+    }
+
+    .navBar__link:hover,
+    .navBar_active {
+      background-color: $fon-cvetnye-fony-oranzhevyy-fon;
+      color: $akcentnyy-akcentnyy-2;
+    }
   }
 
   .button {
@@ -407,21 +427,30 @@ function clickLinkNavBar(event: Event): void {
   }
 }
 
-@media screen and (min-width: 1090px) {
-  .button {
-    &__text {
-      display: block;
-    }
+@media screen and (min-width: 1070px) {
+  .nav {
+    gap: 0 20px;
+  }
+  .navBar :deep(.navBar__menu) {
+    gap: 0 20px;
   }
 }
 
 @media screen and (min-width: 1200px) {
   .nav {
-    gap: 0 48px;
+    gap: 0 12px;
   }
   .navBar :deep(.navBar__menu) {
-    display: flex;
-    gap: 0 48px;
+    gap: 0 12px;
+    .navBar__link {
+      border-radius: 12px;
+      padding: 22px 18px;
+    }
+  }
+  .button {
+    &__text {
+      display: block;
+    }
   }
 }
 </style>

@@ -24,7 +24,6 @@ defineProps<{
   width: 238px;
   height: 358px;
   border-radius: 12px;
-  border: 1px blueviolet solid;
   background-color: $white;
   transition: opacity 0.7s ease, transform 0.7s ease;
   &__wrapper {
