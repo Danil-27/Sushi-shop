@@ -19,7 +19,7 @@
         <div class="logo"><Logo /></div>
         <nav class="nav">
           <Location />
-          <NavBar :links="links" />
+          <NavBar :links="links" @click="ClickLinkNavBar" />
         </nav>
         <div class="button">
           <button
@@ -27,7 +27,7 @@
             id="1"
             :class="{ isActive: 1 === idBtn }"
             class="button__item"
-            @click="buttonClick"
+            @click="clickButton"
           >
             <div v-if="buttonCounter == 1" class="button__counter">
               {{ buttonCounter }}
@@ -52,7 +52,7 @@
             id="2"
             :class="{ isActive: 2 === idBtn }"
             class="button__item"
-            @click="buttonClick"
+            @click="clickButton"
           >
             <Liked />
           </button>
@@ -70,7 +70,7 @@
             id="3"
             :class="{ isActive: 3 === idBtn }"
             class="button__item"
-            @click="buttonClick"
+            @click="clickButton"
           >
             <MyPage />
           </button>
@@ -88,7 +88,7 @@
             id="4"
             :class="{ isActive: 4 === idBtn }"
             class="button__item button_basket"
-            @click="buttonClick"
+            @click="clickButton"
           >
             <span class="button__text">Корзина</span>
             <Basket />
@@ -103,7 +103,11 @@
               <Basket />
             </button>
           </router-link>
-          <Menu v-if="screenWidth < 992" :isMenu="isMenu" />
+          <Menu
+            v-if="screenWidth < 992"
+            :isMenu="isMenu"
+            @update:isMenu="updateIsMenu"
+          />
           <Burger :isMenu="isMenu" @click="toggleMenu" />
         </div>
       </div>
@@ -162,6 +166,19 @@ function updateIdBtn(value: number | null) {
   idBtn.value = value;
 }
 
+function toggleMenu() {
+  if ((isMenu.value = !isMenu.value)) {
+    addСlassNoScroll();
+  } else {
+    removeСlassNoScroll();
+  }
+}
+
+function updateIsMenu(value: boolean) {
+  isMenu.value = value;
+  removeСlassNoScroll();
+}
+
 function updateIsContainsNoScroll() {
   isContainsNoScroll.value = document.body.classList.contains('no-scroll');
 }
@@ -177,19 +194,26 @@ function addСlassNoScroll() {
   if (!isContainsNoScroll.value) {
     document.body.classList.add('no-scroll');
     updateIsContainsNoScroll();
+    console.log('open');
   }
 }
 
-function toggleMenu() {
-  (isMenu.value = !isMenu.value) ? addСlassNoScroll() : removeСlassNoScroll();
-}
-
-function buttonClick(event: Event) {
-  const target = event.currentTarget as HTMLElement;
-  const clickedElementId = target.id;
+function clickButton(event: Event): void {
+  const button = event.currentTarget as HTMLElement;
+  const clickedElementId = button.id;
   idBtn.value = +clickedElementId;
   if (!isContainsNoScroll.value) {
     addСlassNoScroll();
+  }
+}
+
+function ClickLinkNavBar(event: Event): void {
+  const navbar = event.target as HTMLElement;
+  if (navbar.closest('.navBar__link')) {
+    if (isContainsNoScroll.value) {
+      idBtn.value = null;
+      removeСlassNoScroll();
+    }
   }
 }
 </script>

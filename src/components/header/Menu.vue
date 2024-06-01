@@ -1,8 +1,8 @@
 <template>
   <div class="menu" :class="{ open: isMenu }">
     <div class="menu__wrapper">
-      <h2 class="menu__heading">Меню</h2>
-      <NavBar ref="navBarElem" :links="links" />
+      <h2 class="menu__heading">{{ isMenu }}Меню</h2>
+      <NavBar :links="links" @click="clickLimkMenu" />
     </div>
     <div>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt facere
@@ -25,10 +25,9 @@
 
 <script lang="ts" setup>
 import NavBar from 'src/components/navigation/NavBar.vue';
-import { defineProps, ref } from 'vue';
+import { defineProps, defineEmits, ref } from 'vue';
 import { myLink } from 'src/components/header/type';
 
-const navBarElem = ref(null);
 const links = ref<myLink[]>([
   { id: 1, name: 'Повторить прошлый заказ', link: '/Home' },
   { id: 2, name: 'Избранное', link: '/Delivery' },
@@ -39,9 +38,20 @@ const links = ref<myLink[]>([
   { id: 7, name: 'Новости', link: '/News' },
 ]);
 
-defineProps<{
+const props = defineProps<{
   isMenu: boolean;
 }>();
+
+const emit = defineEmits<{
+  (event: 'update:isMenu', value: boolean): void;
+}>();
+
+function clickLimkMenu(event: Event): void {
+  const menu = event.target as HTMLElement;
+  if (menu.closest('.navBar__link')) {
+    emit('update:isMenu', !props.isMenu);
+  }
+}
 </script>
 
 <style lang="scss" scoped>
