@@ -11,9 +11,9 @@ import NavBar from 'src/components/navigation/NavBar.vue';
 const FooterLinks = ref<myLink[]>([
   { id: 1, name: 'Главная', link: '/Home' },
   { id: 2, name: 'Меню', link: '/Menu' },
-  { id: 2, name: 'Доставка', link: '/Delivery' },
-  { id: 3, name: 'Вакансии', link: '/Vacancies' },
-  { id: 4, name: 'Новости', link: '/News' },
+  { id: 3, name: 'Доставка', link: '/Delivery' },
+  { id: 4, name: 'Вакансии', link: '/Vacancies' },
+  { id: 5, name: 'Новости', link: '/News' },
 ]);
 </script>
 

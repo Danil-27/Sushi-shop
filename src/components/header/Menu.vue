@@ -1,23 +1,10 @@
 <template>
   <div class="menu" :class="{ open: isMenu }">
     <div class="menu__wrapper">
-      <h2 class="menu__heading">{{ isMenu }}Меню</h2>
+      <h2 class="menu__heading"></h2>
       <NavBar :links="links" @click="clickLimkMenu" />
     </div>
-    <div>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt facere
-      autem sint, atque possimus sed vitae esse explicabo excepturi quia
-      officiis provident totam a ut ratione saepe quaerat accusantium deleniti
-      omnis consectetur, voluptatem qui alias necessitatibus maiores!
-      Consequatur, expedita alias dolores vitae sint sunt minus cumque obcaecati
-      quidem? Quod cumque, molestiae laboriosam enim quasi voluptates,
-      exercitationem hic doloribus aliquam commodi totam vel aspernatur
-      reprehenderit ut eveniet pariatur numquam sunt, excepturi animi.
-      Voluptatum fuga at accusantium sed temporibus, perferendis commodi aliquid
-      rerum ducimus adipisci cupiditate quia? Ex dignissimos possimus totam!
-      Recusandae eligendi saepe eos veniam quam explicabo eius necessitatibus
-      dolorem repellendus?
-    </div>
+    <div></div>
   </div>
 
   <div class="die" :class="{ visible: isMenu }"></div>
@@ -32,9 +19,9 @@ const links = ref<myLink[]>([
   { id: 1, name: 'Повторить прошлый заказ', link: '/Home' },
   { id: 2, name: 'Избранное', link: '/Delivery' },
   { id: 3, name: 'Профиль', link: '/About' },
-  { id: 4, name: 'Главная', link: '/News' },
+  { id: 4, name: 'Главная', link: '/home' },
   { id: 5, name: 'Доставка', link: '/Delivery' },
-  { id: 6, name: 'О нас', link: '/News' },
+  { id: 6, name: 'О нас', link: '/About' },
   { id: 7, name: 'Новости', link: '/News' },
 ]);
 

@@ -19,11 +19,11 @@
         <router-link class="logo" to="/"><Logo /></router-link>
         <nav class="nav">
           <LocationPopup :isLocation />
-          <Location v-if="screenWidth > 992" @click="clickLocation"> </Location>
+          <Location v-if="screenWidth > 992" @click="clickLocation" />
           <router-link v-else to="/LocationPage">
             <Location />
           </router-link>
-          <NavBar :links="links" @click="clickClosePopup" />
+          <NavBar :links="links" @click="closePopup" />
         </nav>
         <div class="button">
           <button
@@ -31,7 +31,7 @@
             id="1"
             :class="{ isActive: 1 === idBtn }"
             class="button__item"
-            @click="clickButton"
+            @click="getButtonId"
           >
             <div
               v-if="buttonCounter > 0"
@@ -64,7 +64,7 @@
             id="2"
             :class="{ isActive: 2 === idBtn }"
             class="button__item"
-            @click="clickButton"
+            @click="getButtonId"
           >
             <Liked />
           </button>
@@ -82,7 +82,7 @@
             id="3"
             :class="{ isActive: 3 === idBtn }"
             class="button__item"
-            @click="clickButton"
+            @click="getButtonId"
           >
             <MyPage />
           </button>
@@ -100,7 +100,7 @@
             id="4"
             :class="{ isActive: 4 === idBtn }"
             class="button__item button_basket"
-            @click="clickButton"
+            @click="getButtonId"
           >
             <span class="button__text">Корзина</span>
             <Basket />
@@ -123,11 +123,6 @@
           <Burger :isMenu="isMenu" @click="toggleMenu" />
         </div>
       </div>
-    </div>
-    <div class="Var">
-      <div>Resizedwatch : {{ screenWidth }}</div>
-      <div>is Location {{ isLocation }}</div>
-      <div>is Navdar {{ isNavdar }}</div>
     </div>
   </div>
 </template>
@@ -153,7 +148,6 @@ import {
 } from 'src/components/header/index';
 
 let buttonCounter = ref<number>(1);
-let isNavdar = ref<boolean>(false);
 let isLocation = ref<boolean>(false);
 let isMenu = ref<boolean>(false);
 let idBtn = ref<number | null>(null);
@@ -192,13 +186,11 @@ function addСlassNoScroll() {
   if (!isContainsNoScroll.value) {
     document.body.classList.add('no-scroll');
     updateIsContainsNoScroll();
-    console.log('open');
   }
 }
 
 function eventListenerLocation(event: Event) {
   const target = event.target as HTMLElement;
-  console.log('clik :', target);
   if (!target.closest('.LocationPopup') && !target.closest('.location')) {
     isLocation.value = false;
     if (!isLocation.value) {
@@ -207,9 +199,7 @@ function eventListenerLocation(event: Event) {
   }
 }
 
-function clickLocation(event: Event): void {
-  const location = event.currentTarget as HTMLElement;
-  console.log('location', location);
+function clickLocation(): void {
   isLocation.value = !isLocation.value;
   if (isLocation.value) {
     document.addEventListener('click', eventListenerLocation);
@@ -233,7 +223,7 @@ function updateIdButton(value: number | null) {
   idBtn.value = value;
 }
 
-function clickButton(event: Event): void {
+function getButtonId(event: Event): void {
   const button = event.currentTarget as HTMLElement;
   const clickedElementId = button.id;
   idBtn.value = +clickedElementId;
@@ -242,9 +232,8 @@ function clickButton(event: Event): void {
   }
 }
 
-function clickClosePopup(event: Event): void {
+function closePopup(event: Event): void {
   const navbar = event.target as HTMLElement;
-  // console.log(navbar);
   if (navbar.closest('.navBar__link')) {
     navbar.closest('.navBar__link')?.classList.add('navBar_active');
     if (isContainsNoScroll.value) {
@@ -256,16 +245,6 @@ function clickClosePopup(event: Event): void {
 </script>
 
 <style scoped lang="scss">
-// --------------------------------------------------------------------
-.Var {
-  position: fixed;
-  top: 50%;
-  background-color: black;
-  color: white;
-  padding: 8px;
-  z-index: 100000;
-}
-// --------------------------------------------------------------------
 .container {
   padding: 0px 0px;
 }

@@ -1,8 +1,7 @@
 <template>
   <div class="LocationPopup" :class="{ openLocation: !isLocation }">
     <div class="LocationPopup__wrapper">
-      text
-      <div class="LocationPopup__text">isLocation: {{ isLocation }}</div>
+      <div class="LocationPopup__text"></div>
     </div>
   </div>
 </template>
