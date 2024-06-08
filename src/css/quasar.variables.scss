@@ -1,4 +1,7 @@
 // COLOR
+$section: #fff;
+$white: #fff;
+
 $akcentnyy-akcentnyy-1: #00cc2d;
 $akcentnyy-akcentnyy-2: #f63;
 
@@ -42,3 +45,13 @@ $Avenir-600: 'AvenirNextCyr-Demi', sans-serif;
 $Avenir-500: 'AvenirNextCyr-Medium', sans-serif;
 $Avenir-400: 'AvenirNextCyr-Regular', sans-serif;
 $Avenir-100: 'AvenirNextCyr-Thin', sans-serif;
+
+// Z-INDEX
+$z-burger: 1000;
+$z-menu: 100;
+
+$z-order: 5;
+$z-header: 10;
+
+// SCROLLBAR-WIDTH
+$scrollbarWidth: var(--scrollbar-width);
